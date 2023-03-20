@@ -21,11 +21,8 @@
             }
         }
 
-        compChoice = compAssign(compNum)
-        userChoice = prompt('Enter: (Rock, Paper, or Scissors) to begin.')
-        
-        
-
+                
+        // takes user choice and determines winner against comp choice prints result
         function rps(userChoice, compChoice) {
             wincon = [1, 3, -4];
             user = userChoice.length;
@@ -33,15 +30,34 @@
 
             if (user === comp) {
                 console.log('Tie Game! You both chose ' + compChoice)
+                return tieCount++
             } else if (wincon.includes(user - comp)) {
                 console.log('You win! ' + userChoice + ' beats ' + compChoice)
+                return userWins++
             } else {
                 console.log('You lose! ' + compChoice + ' beats ' + userChoice)
+                return compWins++
             }
             
         }
 
-        rps(userChoice, compChoice)
+        let tieCount = 0;
+        let userWins = 0;
+        let compWins = 0;
+        
+        for (let i = 1; i < 6; i++) {
+            console.log('Round ' + i + ' :');
+            let compNum = Math.floor(Math.random() * 3 + 1);
+            compChoice = compAssign(compNum)
+            userChoice = prompt('Enter: (Rock, Paper, or Scissors) to begin.')
+            rps(userChoice, compChoice);
+        }
+
+        if (userWins > compWins) {
+            console.log('Ayeee lfg you win the game!!!')
+        } else {
+            console.log('You lost damn you suck bro...')
+        }
         
 
 
