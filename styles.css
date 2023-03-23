@@ -38,6 +38,7 @@ body {
     border-radius: 20px;
     border-style: outset;
     padding: 3%;
+    gap: 2%;
 }
 
 .win-loss-count {
@@ -63,8 +64,10 @@ body {
     justify-content: center;
     align-items: center;
     padding: 5%;
-    height: auto;
-    width: 45%
+    min-height: 60%;
+    min-width: 45%;
+    max-width: 45%;
+    max-height: 45%;
     
 }
 
@@ -97,10 +100,6 @@ body {
     background-color: #9d8189;
 }
 
-.clicked {
-    border-style: inset;
-    border: 3px;
-}
 
 
 
