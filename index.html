@@ -76,14 +76,20 @@
             let comp = compChoice.length;
 
             if (user === comp) {
-                console.log('Tie Game! You both chose ' + compChoice)
-                return tieCount++
+                infoUpper.textContent = 'Tie Game';
+                infoLower.textContent = 'You both chose ' + compChoice;
+                tieCount++;
+                
             } else if (wincon.includes(user - comp)) {
-                console.log('You win! ' + userChoice + ' beats ' + compChoice)
-                return userWins++
+                infoUpper.textContent = 'Round Won!';
+                infoLower.textContent = 'You win! ' + userChoice + ' beats ' + compChoice;
+                userWins++
+                userScore.textContent = userWins.toString();
             } else {
-                console.log('You lose! ' + compChoice + ' beats ' + userChoice)
-                return compWins++
+                infoUpper.textContent = 'Round Lost';
+                infoLower.textContent = 'You lose! ' + compChoice + ' beats ' + userChoice;
+                compWins++
+                compScore.textContent = compWins.toString();
             }
             
         }
@@ -100,16 +106,18 @@
             //rps(userChoice, compChoice);
        // }
 
-        if (userWins > compWins) {
-            console.log('Ayeee lfg you win the game!!!')
-        } else {
-            console.log('You lost damn you suck bro...')
-        }
-        
+       
+        let userChoice = '';
         const userRock = document.querySelector('.rock');
         const userPaper = document.querySelector('.paper');
         const userScissors = document.querySelector('.scissors');
         const startButton = document.querySelector('.start');
+        const startContainer = document.querySelector('.start-container');
+        const infoUpper = document.querySelector('.info-upper');
+        const infoLower = document.querySelector('.info-lower');
+        const infoBox = document.querySelector('info-box');
+        let compScore = document.querySelector('.comp-wins');
+        let userScore = document.querySelector('.user-wins');
 
         startButton.addEventListener('click', gameTime);
 
@@ -117,6 +125,10 @@
         function gameTime() {
             userWins = 0;
             compWins = 0;
+            infoUpper.textContent = 'Goodluck!';
+            infoLower.textContent = 'Choose Rock, Paper, or Scissors to begin.';
+            startContainer.removeChild(startButton);
+
             getChoice();
             
             
@@ -125,16 +137,23 @@
         function getChoice() {
             userPaper.addEventListener('click', () => {
                 userChoice = 'Paper';
+                compNum = Math.floor(Math.random() * 3 + 1);
                 compChoice = compAssign(compNum);
+                rps(userChoice,compChoice);
 
             });
             userScissors.addEventListener('click', () => {
                 userChoice = 'Scissors';
+                compNum = Math.floor(Math.random() * 3 + 1);
                 compChoice = compAssign(compNum);
+                rps(userChoice,compChoice);
             });
             userRock.addEventListener('click', () => {
                 userChoice = 'Rock';
+                compNum = Math.floor(Math.random() * 3 + 1);
                 compChoice = compAssign(compNum);
+
+                rps(userChoice,compChoice);
             } );
         }
 
